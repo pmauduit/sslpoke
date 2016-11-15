@@ -33,10 +33,11 @@ public class HttpsClient{
 
     } catch (MalformedURLException e) {
       e.printStackTrace();
+      System.exit(1);
     } catch (IOException e) {
       e.printStackTrace();
+      System.exit(1);
     }
-
   }
 
   private void print_https_cert(HttpsURLConnection con){
