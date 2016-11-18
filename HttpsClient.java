@@ -29,7 +29,7 @@ public class HttpsClient{
       print_https_cert(con);
 
       //dump all the content
-      print_content(con);
+      //print_content(con);
 
     } catch (MalformedURLException e) {
       e.printStackTrace();
