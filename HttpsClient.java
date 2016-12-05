@@ -31,16 +31,13 @@ public class HttpsClient{
       //dump all the content
       //print_content(con);
 
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-      System.exit(1);
-    } catch (IOException e) {
+    } catch (Throwable e) {
       e.printStackTrace();
       System.exit(1);
     }
   }
 
-  private void print_https_cert(HttpsURLConnection con){
+  private void print_https_cert(HttpsURLConnection con) throws Exception {
 
     if(con!=null){
 
@@ -63,21 +60,23 @@ public class HttpsClient{
 
       } catch (SSLPeerUnverifiedException e) {
         e.printStackTrace();
+        throw e;
       } catch (IOException e){
         e.printStackTrace();
+        throw e;
       }
 
     }
 
   }
 
-  private void print_content(HttpsURLConnection con){
-    if(con!=null){
+  private void print_content(HttpsURLConnection con) throws Exception {
+    if(con!=null) {
 
       try {
 
-        System.out.println("****** Content of the URL ********");                  
-        BufferedReader br = 
+        System.out.println("****** Content of the URL ********");
+        BufferedReader br =
           new BufferedReader(
               new InputStreamReader(con.getInputStream()));
 
@@ -90,6 +89,7 @@ public class HttpsClient{
 
       } catch (IOException e) {
         e.printStackTrace();
+        throw e;
       }
 
     }
