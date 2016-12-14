@@ -1,0 +1,15 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Tlsv1.0 tester</display-name>
+	<servlet>
+		<servlet-name>tlsv1tester</servlet-name>
+		<servlet-class>fr.spironet.tlsv1tester.Tlsv1Tester</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>tlsv1tester</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+</web-app>

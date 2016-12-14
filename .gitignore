@@ -1,1 +1,4 @@
 *.class
+tlsv1tester/.classpath
+tlsv1tester/.project
+tlsv1tester/target
