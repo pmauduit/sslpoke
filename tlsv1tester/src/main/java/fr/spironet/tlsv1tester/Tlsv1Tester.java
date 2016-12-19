@@ -3,6 +3,7 @@ package fr.spironet.tlsv1tester;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.security.cert.Certificate;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -20,12 +21,22 @@ public class Tlsv1Tester extends HttpServlet {
 	public static int test(String https_url) {
 		URL url;
 		int status = 0;
+		HttpsURLConnection conn = null;
 		try {
 			url = new URL(https_url);
-			url.openConnection();
+			conn = (HttpsURLConnection) url.openConnection();
+			conn.connect();
+		    if(conn != null) {
+		          Certificate[] certs = conn.getServerCertificates();
+		          for(Certificate cert : certs) { /* do nothing */ }
+                  System.out.println(String.format("%s: OK\n", https_url));
+		    }
 		} catch (Throwable e) {
 			e.printStackTrace();
 			status = 1;
+		} finally {
+		    if (conn != null )
+		        conn.disconnect();
 		}
 		return status;
 	}
